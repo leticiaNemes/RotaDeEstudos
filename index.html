@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Rota de Estudos</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="topo">
+    <nav class="menu">
+      <h1 class="logo">Rota de Estudos</h1>
+
+      <ul>
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#plano">Meu Plano</a></li>
+        <li><a href="#carreira">Carreira</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="inicio" class="hero">
+    <div class="hero-texto">
+      <span class="tag">Descubra por onde começar</span>
+
+      <h2>Monte um plano de estudos com base no seu objetivo</h2>
+
+      <p>
+        Nem todo mundo sabe por onde começar a estudar. Por isso, este site ajuda
+        você a organizar uma rotina de estudos de acordo com a faculdade, carreira
+        ou área que deseja seguir.
+      </p>
+
+      <p>
+        A ideia é transformar suas respostas em um caminho mais claro: o que estudar,
+        como estudar, como dividir o tempo e quais passos seguir para se preparar
+        melhor para o futuro.
+      </p>
+
+      <a href="#plano" class="botao-principal">Criar meu plano</a>
+    </div>
+
+    <div class="hero-card">
+      <h3>O que o site faz?</h3>
+
+      <p>1. Entende seu objetivo principal.</p>
+      <p>2. Identifica automaticamente a área mais próxima.</p>
+      <p>3. Diz o que estudar primeiro.</p>
+      <p>4. Explica como estudar na prática.</p>
+      <p>5. Cria um cronograma semanal.</p>
+      <p>6. Indica conexão por WhatsApp para quem prefere estudar em grupo.</p>
+    </div>
+  </section>
+
+  <section id="plano" class="secao">
+    <div class="titulo-secao">
+      <span>Plano personalizado</span>
+      <h2>Comece pelo seu objetivo</h2>
+
+      <p>
+        Preencha suas informações e receba uma sugestão de rotina, temas de estudo,
+        organização do tempo e próximos passos.
+      </p>
+    </div>
+
+    <div class="area-formulario">
+      <form id="formPlano" class="formulario">
+
+        <label>
+          Nome:
+          <input type="text" id="nome" placeholder="Digite seu nome" required />
+        </label>
+
+        <label>
+          Faculdade ou carreira desejada:
+          <input type="text" id="faculdade" placeholder="Ex: Psicologia, Medicina, Design, Ciência de Dados..." required />
+        </label>
+
+        <label>
+          Horas disponíveis por dia:
+          <input type="number" id="horas" min="0" max="12" step="0.5" placeholder="Ex: 2" required />
+        </label>
+
+        <label>
+          Prefere estudar:
+          <select id="modoEstudo" required>
+            <option value="">Selecione</option>
+            <option value="sozinho">Sozinho(a)</option>
+            <option value="grupo">Em grupo</option>
+          </select>
+        </label>
+
+        <label>
+          Quer trabalhar fora do Brasil?
+          <select id="exterior" required>
+            <option value="">Selecione</option>
+            <option value="sim">Sim</option>
+            <option value="nao">Não</option>
+            <option value="talvez">Talvez</option>
+          </select>
+        </label>
+
+        <button type="submit" class="botao-principal">Gerar plano</button>
+      </form>
+
+      <div>
+        <div id="resultadoPlano" class="resultado-plano">
+          <h3>Seu plano aparecerá aqui</h3>
+
+          <p>
+            Depois de preencher o formulário, o site vai identificar automaticamente
+            a área mais próxima do seu objetivo e montar uma sugestão personalizada.
+          </p>
+        </div>
+
+        <div id="areaGrupoEstudo" class="grupo-estudo escondido">
+          <h3>Grupo de estudos</h3>
+
+          <p>
+            Como você prefere estudar em grupo, o site sugere uma forma de se conectar
+            com pessoas que tenham objetivos parecidos.
+          </p>
+
+          <div id="infoGrupo"></div>
+
+          <div class="botoes-grupo">
+            <a
+              id="botaoWhatsapp"
+              href="#"
+              target="_blank"
+              class="botao-grupo whatsapp"
+            >
+              Entrar ou criar grupo no WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="calendario-area">
+      <h3>Cronograma semanal de estudos</h3>
+
+      <p>
+        O cronograma é atualizado automaticamente conforme seu objetivo e a quantidade
+        de horas disponíveis por dia.
+      </p>
+
+      <div id="calendarioSemanal" class="calendario-grid"></div>
+    </div>
+  </section>
+
+  <section id="carreira" class="secao fundo-claro">
+    <div class="titulo-secao">
+      <span>Carreira</span>
+      <h2>Da escolha ao primeiro trabalho</h2>
+
+      <p>
+        Um caminho simples para sair da dúvida inicial e começar a construir uma trajetória.
+      </p>
+    </div>
+
+    <div class="passos">
+      <div class="passo">1. Escolher um objetivo</div>
+      <div class="passo">2. Entender a área mais próxima</div>
+      <div class="passo">3. Criar uma rotina de estudos</div>
+      <div class="passo">4. Aprender conteúdos básicos</div>
+      <div class="passo">5. Fazer atividades práticas</div>
+      <div class="passo">6. Criar portfólio ou currículo</div>
+      <div class="passo">7. Buscar estágio ou jovem aprendiz</div>
+      <div class="passo">8. Preparar-se para entrevistas</div>
+    </div>
+
+    <div class="exterior-box">
+      <h3>Estudar ou trabalhar fora do Brasil</h3>
+
+      <p>
+        Para quem pensa em trabalhar ou estudar fora do país, alguns pontos são importantes:
+      </p>
+
+      <div class="dicas-grid">
+        <div class="dica">
+          <h4>Inglês</h4>
+          <p>Ajuda a estudar conteúdos internacionais e participar de entrevistas.</p>
+        </div>
+
+        <div class="dica">
+          <h4>Currículo internacional</h4>
+          <p>Deve ser simples, direto e mostrar experiências e habilidades.</p>
+        </div>
+
+        <div class="dica">
+          <h4>Portfólio online</h4>
+          <p>Mostra projetos, atividades, certificados e experiências.</p>
+        </div>
+
+        <div class="dica">
+          <h4>LinkedIn</h4>
+          <p>Ajuda a criar contatos profissionais e encontrar oportunidades.</p>
+        </div>
+
+        <div class="dica">
+          <h4>Certificados</h4>
+          <p>Cursos e certificados ajudam a comprovar conhecimentos.</p>
+        </div>
+
+        <div class="dica">
+          <h4>Experiência prática</h4>
+          <p>Projetos, estágios e trabalhos voluntários fortalecem o currículo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="rodape">
+    <p>
+      Rota de Estudos — transformando objetivos em planos de ação.
+    </p>
+  </footer>
+
+  <script src="ll.js"></script>
+</body>
+</html>
