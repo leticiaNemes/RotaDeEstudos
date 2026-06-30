@@ -18,6 +18,7 @@
         <li><a href="#inicio">Início</a></li>
         <li><a href="#plano">Meu Plano</a></li>
         <li><a href="#carreira">Carreira</a></li>
+        <li><a href="#guias-exterior">Guias</a></li>
       </ul>
     </nav>
   </header>
@@ -36,8 +37,7 @@
 
       <p>
         A ideia é transformar suas respostas em um caminho mais claro: o que estudar,
-        como estudar, como dividir o tempo e quais passos seguir para se preparar
-        melhor para o futuro.
+        como estudar, como se preparar e quais passos seguir para construir uma carreira.
       </p>
 
       <a href="#plano" class="botao-principal">Criar meu plano</a>
@@ -50,8 +50,9 @@
       <p>2. Identifica automaticamente a área mais próxima.</p>
       <p>3. Diz o que estudar primeiro.</p>
       <p>4. Explica como estudar na prática.</p>
-      <p>5. Cria um cronograma semanal.</p>
-      <p>6. Indica conexão por WhatsApp para quem prefere estudar em grupo.</p>
+      <p>5. Mostra onde você pode trabalhar.</p>
+      <p>6. Permite registrar anotações em um diário de estudos.</p>
+      <p>7. Indica conexão por WhatsApp para quem prefere estudar em grupo.</p>
     </div>
   </section>
 
@@ -61,8 +62,8 @@
       <h2>Comece pelo seu objetivo</h2>
 
       <p>
-        Preencha suas informações e receba uma sugestão de rotina, temas de estudo,
-        organização do tempo e próximos passos.
+        Preencha suas informações e receba uma sugestão de temas de estudo,
+        matérias, caminhos profissionais e próximos passos.
       </p>
     </div>
 
@@ -140,15 +141,49 @@
       </div>
     </div>
 
-    <div class="calendario-area">
-      <h3>Cronograma semanal de estudos</h3>
+    <div class="diario-area">
+      <h3>Caderno / diário de estudos</h3>
 
       <p>
-        O cronograma é atualizado automaticamente conforme seu objetivo e a quantidade
-        de horas disponíveis por dia.
+        Use este espaço para registrar o que estudou, dúvidas, resumos, ideias e pontos
+        que precisa revisar depois. As anotações ficam salvas no navegador.
       </p>
 
-      <div id="calendarioSemanal" class="calendario-grid"></div>
+      <form id="formDiario" class="formulario-diario">
+        <label>
+          Data do estudo:
+          <input type="date" id="dataDiario" required />
+        </label>
+
+        <label>
+          Matéria ou tema estudado:
+          <input
+            type="text"
+            id="temaDiario"
+            placeholder="Ex: HTML, Biologia, Inglês, Matemática..."
+            required
+          />
+        </label>
+
+        <label>
+          Anotações:
+          <textarea
+            id="textoDiario"
+            placeholder="Escreva aqui o que você estudou, dúvidas, resumo ou próximos passos..."
+            required
+          ></textarea>
+        </label>
+
+        <button type="submit" class="botao-principal">
+          Salvar anotação
+        </button>
+      </form>
+
+      <div class="lista-anotacoes-area">
+        <h4>Anotações salvas</h4>
+
+        <div id="listaAnotacoes" class="lista-anotacoes"></div>
+      </div>
     </div>
   </section>
 
@@ -177,40 +212,313 @@
       <h3>Estudar ou trabalhar fora do Brasil</h3>
 
       <p>
-        Para quem pensa em trabalhar ou estudar fora do país, alguns pontos são importantes:
+        Para quem pensa em trabalhar ou estudar fora do país, não basta só querer.
+        É preciso organizar idioma, currículo, portfólio, presença profissional,
+        certificados e experiências práticas. Clique em cada card para ver o caminho.
       </p>
 
       <div class="dicas-grid">
-        <div class="dica">
+        <a href="#passo-ingles" class="dica dica-link">
           <h4>Inglês</h4>
-          <p>Ajuda a estudar conteúdos internacionais e participar de entrevistas.</p>
-        </div>
+          <p>Aprenda como começar do básico e usar o idioma para carreira.</p>
+          <span>Ver passo a passo</span>
+        </a>
 
-        <div class="dica">
+        <a href="#passo-curriculo" class="dica dica-link">
           <h4>Currículo internacional</h4>
-          <p>Deve ser simples, direto e mostrar experiências e habilidades.</p>
-        </div>
+          <p>Veja como montar um currículo objetivo e mais profissional.</p>
+          <span>Ver passo a passo</span>
+        </a>
 
-        <div class="dica">
+        <a href="#passo-portfolio" class="dica dica-link">
           <h4>Portfólio online</h4>
-          <p>Mostra projetos, atividades, certificados e experiências.</p>
-        </div>
+          <p>Entenda como mostrar seus projetos mesmo sem experiência formal.</p>
+          <span>Ver passo a passo</span>
+        </a>
 
-        <div class="dica">
+        <a href="#passo-linkedin" class="dica dica-link">
           <h4>LinkedIn</h4>
-          <p>Ajuda a criar contatos profissionais e encontrar oportunidades.</p>
-        </div>
+          <p>Aprenda a montar um perfil que pareça sério e organizado.</p>
+          <span>Ver passo a passo</span>
+        </a>
 
-        <div class="dica">
+        <a href="#passo-certificados" class="dica dica-link">
           <h4>Certificados</h4>
-          <p>Cursos e certificados ajudam a comprovar conhecimentos.</p>
-        </div>
+          <p>Saiba escolher cursos que tenham relação com seu objetivo.</p>
+          <span>Ver passo a passo</span>
+        </a>
 
-        <div class="dica">
+        <a href="#passo-experiencia" class="dica dica-link">
           <h4>Experiência prática</h4>
-          <p>Projetos, estágios e trabalhos voluntários fortalecem o currículo.</p>
-        </div>
+          <p>Veja como ganhar prática mesmo antes do primeiro emprego.</p>
+          <span>Ver passo a passo</span>
+        </a>
       </div>
+    </div>
+  </section>
+
+  <section id="guias-exterior" class="secao guias-exterior">
+    <div class="titulo-secao">
+      <span>Passo a passo</span>
+      <h2>Como se preparar para estudar ou trabalhar fora</h2>
+
+      <p>
+        Trabalhar ou estudar fora do Brasil não começa comprando passagem.
+        Começa com preparação: idioma, currículo, portfólio, presença profissional
+        e experiência prática.
+      </p>
+    </div>
+
+    <div class="guia-card" id="passo-ingles">
+      <h3>Como começar a estudar inglês para carreira</h3>
+
+      <p>
+        O objetivo aqui não é ficar fluente do nada. O primeiro passo é conseguir
+        se apresentar, entender conteúdos básicos da área e participar de conversas simples.
+      </p>
+
+      <h4>Materiais que você precisa</h4>
+      <ul>
+        <li>Caderno ou bloco de notas digital.</li>
+        <li>Celular com fone de ouvido.</li>
+        <li>Aplicativo de tradução ou dicionário.</li>
+        <li>Vídeos curtos em inglês com legenda.</li>
+      </ul>
+
+      <h4>Passo a passo</h4>
+      <ol>
+        <li>Comece aprendendo frases de apresentação pessoal.</li>
+        <li>Monte uma lista com 30 palavras da sua área de interesse.</li>
+        <li>Assista vídeos curtos de 5 a 10 minutos com legenda em português.</li>
+        <li>Depois assista o mesmo vídeo com legenda em inglês.</li>
+        <li>Anote 5 frases úteis por dia.</li>
+        <li>Grave um áudio curto falando quem você é, o que estuda e qual profissão deseja seguir.</li>
+        <li>Repita o áudio uma vez por semana para perceber sua evolução.</li>
+      </ol>
+
+      <h4>Exemplo de apresentação em inglês</h4>
+
+      <div class="exemplo-guia">
+        <p>
+          Hello, my name is Letícia. I am from Brazil. I am interested in technology,
+          design and psychology. I want to improve my English because I would like to
+          study more, work in the future and have international opportunities.
+        </p>
+      </div>
+
+      <p class="guia-dica">
+        Tarefa prática: grave uma apresentação de 30 segundos em inglês e salve para comparar daqui a um mês.
+      </p>
+
+      <a href="#carreira" class="voltar-guia">Voltar para os cards</a>
+    </div>
+
+    <div class="guia-card" id="passo-curriculo">
+      <h3>Como montar um currículo internacional</h3>
+
+      <p>
+        Um currículo internacional precisa ser direto, organizado e fácil de entender.
+        Ele não deve parecer uma redação. A pessoa precisa bater o olho e entender
+        quem você é, o que sabe fazer e o que está buscando.
+      </p>
+
+      <h4>O que colocar no currículo</h4>
+      <ul>
+        <li>Nome completo.</li>
+        <li>Cidade e país.</li>
+        <li>E-mail profissional.</li>
+        <li>LinkedIn ou portfólio, se tiver.</li>
+        <li>Objetivo profissional.</li>
+        <li>Formação escolar.</li>
+        <li>Cursos e certificados.</li>
+        <li>Projetos feitos.</li>
+        <li>Idiomas.</li>
+        <li>Habilidades principais.</li>
+      </ul>
+
+      <h4>O que evitar</h4>
+      <ul>
+        <li>CPF, RG e endereço completo.</li>
+        <li>Foto, a não ser que a vaga peça.</li>
+        <li>Textos muito longos.</li>
+        <li>Informações que não tenham relação com estudo ou trabalho.</li>
+        <li>Mentir sobre inglês, cursos ou experiências.</li>
+      </ul>
+
+      <h4>Modelo simples de currículo</h4>
+
+      <div class="exemplo-guia">
+        <p><strong>Name:</strong> Letícia Nemes</p>
+        <p><strong>Location:</strong> Curitiba, Brazil</p>
+        <p><strong>Profile:</strong> Student interested in technology, design and human behavior.</p>
+        <p><strong>Education:</strong> High School Student</p>
+        <p><strong>Skills:</strong> Communication, creativity, organization, basic technology.</p>
+        <p><strong>Languages:</strong> Portuguese native, English beginner.</p>
+        <p><strong>Projects:</strong> Study plan website using HTML, CSS and JavaScript.</p>
+      </div>
+
+      <p class="guia-dica">
+        Tarefa prática: crie uma primeira versão do currículo em português e depois traduza as partes principais para inglês.
+      </p>
+
+      <a href="#carreira" class="voltar-guia">Voltar para os cards</a>
+    </div>
+
+    <div class="guia-card" id="passo-portfolio">
+      <h3>Como começar um portfólio online</h3>
+
+      <p>
+        O portfólio serve para mostrar o que você consegue fazer na prática.
+        Mesmo sem emprego, dá para montar um portfólio com trabalhos escolares,
+        projetos pessoais, artes, sites, pesquisas e apresentações.
+      </p>
+
+      <h4>Onde montar</h4>
+      <ul>
+        <li>Google Drive: simples para guardar arquivos.</li>
+        <li>Canva: bom para design, apresentações e artes.</li>
+        <li>GitHub: ideal para projetos de programação.</li>
+        <li>Notion: bom para organizar textos, links e imagens.</li>
+        <li>Behance: bom para design, artes e trabalhos visuais.</li>
+      </ul>
+
+      <h4>Estrutura de cada projeto</h4>
+      <ol>
+        <li>Nome do projeto.</li>
+        <li>Objetivo do projeto.</li>
+        <li>Ferramentas usadas.</li>
+        <li>O que você fez.</li>
+        <li>Imagem, print ou link do resultado.</li>
+        <li>O que você aprendeu com esse projeto.</li>
+      </ol>
+
+      <h4>Exemplo de projeto para colocar no portfólio</h4>
+
+      <div class="exemplo-guia">
+        <p><strong>Projeto:</strong> Rota de Estudos</p>
+        <p><strong>Objetivo:</strong> Criar um site que ajuda estudantes a organizarem um plano de estudos.</p>
+        <p><strong>Ferramentas:</strong> HTML, CSS e JavaScript.</p>
+        <p><strong>Minha participação:</strong> Desenvolvi a estrutura do site, os formulários, os cards e a lógica do plano personalizado.</p>
+        <p><strong>Aprendizado:</strong> Aprendi a conectar respostas do usuário com recomendações automáticas.</p>
+      </div>
+
+      <p class="guia-dica">
+        Tarefa prática: escolha 3 trabalhos que você já fez e transforme cada um em um pequeno card explicativo.
+      </p>
+
+      <a href="#carreira" class="voltar-guia">Voltar para os cards</a>
+    </div>
+
+    <div class="guia-card" id="passo-linkedin">
+      <h3>Como criar um LinkedIn profissional</h3>
+
+      <p>
+        O LinkedIn funciona como uma vitrine profissional. Mesmo para quem ainda está estudando,
+        ele pode mostrar interesses, cursos, projetos e evolução.
+      </p>
+
+      <h4>Como preencher o perfil</h4>
+      <ol>
+        <li>Use uma foto simples, com boa iluminação e fundo limpo.</li>
+        <li>Coloque um título profissional, mesmo sendo estudante.</li>
+        <li>Escreva um resumo curto sobre seus interesses.</li>
+        <li>Adicione cursos, certificados e projetos.</li>
+        <li>Siga empresas, faculdades e profissionais da área desejada.</li>
+        <li>Publique aprendizados, projetos e reflexões sobre carreira.</li>
+      </ol>
+
+      <h4>Exemplos de título para perfil</h4>
+
+      <div class="exemplo-guia">
+        <p>Estudante interessado em Ciência de Dados e Tecnologia</p>
+        <p>Estudante com interesse em Psicologia, comportamento humano e comunicação</p>
+        <p>Estudante interessado em Design Gráfico, criatividade e comunicação visual</p>
+      </div>
+
+      <h4>Exemplo de resumo</h4>
+
+      <div class="exemplo-guia">
+        <p>
+          Sou estudante e estou desenvolvendo meus conhecimentos em tecnologia,
+          comunicação e organização de estudos. Tenho interesse em aprender sobre
+          carreira, projetos digitais e oportunidades futuras no Brasil e no exterior.
+        </p>
+      </div>
+
+      <p class="guia-dica">
+        Tarefa prática: crie um perfil básico e publique seu primeiro projeto, mesmo que seja escolar.
+      </p>
+
+      <a href="#carreira" class="voltar-guia">Voltar para os cards</a>
+    </div>
+
+    <div class="guia-card" id="passo-certificados">
+      <h3>Como escolher cursos e certificados</h3>
+
+      <p>
+        Certificado não é enfeite. Ele precisa mostrar que você estudou algo que tem relação
+        com seu objetivo. Fazer curso aleatório só para encher currículo deixa tudo fraco.
+      </p>
+
+      <h4>Como escolher bons cursos</h4>
+      <ol>
+        <li>Escolha uma área principal para começar.</li>
+        <li>Procure cursos básicos antes dos avançados.</li>
+        <li>Veja se o curso tem exercício ou projeto prático.</li>
+        <li>Guarde o certificado em PDF.</li>
+        <li>Depois do curso, faça algo próprio usando o que aprendeu.</li>
+      </ol>
+
+      <h4>Exemplos por área</h4>
+
+      <div class="exemplo-guia">
+        <p><strong>Tecnologia:</strong> lógica de programação, HTML, CSS, JavaScript e Excel.</p>
+        <p><strong>Design:</strong> Canva, teoria das cores, tipografia e identidade visual.</p>
+        <p><strong>Psicologia/Humanas:</strong> comunicação, comportamento, leitura crítica e escrita.</p>
+        <p><strong>Negócios:</strong> administração básica, finanças pessoais, empreendedorismo e atendimento.</p>
+        <p><strong>Saúde:</strong> biologia básica, primeiros socorros, saúde mental e qualidade de vida.</p>
+      </div>
+
+      <p class="guia-dica">
+        Tarefa prática: escolha 2 cursos gratuitos ligados ao seu objetivo e defina uma data para terminar cada um.
+      </p>
+
+      <a href="#carreira" class="voltar-guia">Voltar para os cards</a>
+    </div>
+
+    <div class="guia-card" id="passo-experiencia">
+      <h3>Como ganhar experiência prática mesmo sem emprego</h3>
+
+      <p>
+        Muita gente acha que só tem experiência quando já trabalhou registrado.
+        Mas projetos, atividades escolares, voluntariado e trabalhos simulados também ajudam
+        a desenvolver responsabilidade, comunicação e prática.
+      </p>
+
+      <h4>Formas de ganhar experiência</h4>
+      <ol>
+        <li>Participar de trabalhos em grupo com função definida.</li>
+        <li>Criar projetos próprios, como sites, apresentações, pesquisas ou campanhas.</li>
+        <li>Ajudar pequenos negócios da família com organização, divulgação ou planilhas.</li>
+        <li>Fazer voluntariado em eventos, escolas, igrejas, ONGs ou projetos sociais.</li>
+        <li>Criar conteúdos ou materiais sobre a área que deseja seguir.</li>
+        <li>Registrar tudo em currículo, portfólio ou LinkedIn.</li>
+      </ol>
+
+      <h4>Exemplo de como transformar uma atividade em experiência</h4>
+
+      <div class="exemplo-guia">
+        <p><strong>Atividade:</strong> Trabalho escolar em grupo.</p>
+        <p><strong>O que eu fiz:</strong> Organizei as informações, montei os slides e apresentei uma parte do conteúdo.</p>
+        <p><strong>Habilidades desenvolvidas:</strong> Comunicação, organização, pesquisa e trabalho em equipe.</p>
+        <p><strong>Como colocar no portfólio:</strong> Projeto escolar sobre planejamento de carreira, com apresentação e pesquisa de dados.</p>
+      </div>
+
+      <p class="guia-dica">
+        Tarefa prática: escolha uma atividade que você já fez e escreva quais habilidades ela desenvolveu.
+      </p>
+
+      <a href="#carreira" class="voltar-guia">Voltar para os cards</a>
     </div>
   </section>
 
