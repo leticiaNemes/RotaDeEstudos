@@ -235,7 +235,7 @@ body {
   color: #374151;
 }
 
-/* DESTAQUE DA ÁREA IDENTIFICADA */
+/* DESTAQUES */
 
 .area-identificada {
   background: #f5f3ff;
@@ -246,8 +246,6 @@ body {
   font-weight: bold;
   margin-bottom: 14px;
 }
-
-/* DESTAQUE DA ATIVIDADE PRÁTICA */
 
 .destaque-plano {
   background: #eef2ff;
@@ -318,49 +316,119 @@ body {
   color: #374151;
 }
 
-/* CRONOGRAMA */
+/* DIÁRIO DE ESTUDOS */
 
-.calendario-area {
-  margin-top: 40px;
+.diario-area {
+  margin-top: 45px;
+  background: white;
+  border-radius: 22px;
+  padding: 30px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
 }
 
-.calendario-area h3 {
+.diario-area h3 {
   font-size: 1.7rem;
   color: #111827;
+  margin-bottom: 8px;
 }
 
-.calendario-area p {
+.diario-area p {
   color: #4b5563;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
-.calendario-grid {
+.formulario-diario {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 14px;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
 }
 
-.dia-card {
-  background: white;
-  padding: 18px;
-  border-radius: 16px;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
-}
-
-.dia-card h4 {
-  color: #7c3aed;
-  margin-bottom: 8px;
-}
-
-.dia-card p {
-  font-size: 0.92rem;
+.formulario-diario label {
+  display: block;
   color: #374151;
-  margin-bottom: 8px;
+  font-weight: bold;
 }
 
-.dia-card strong {
+.formulario-diario input,
+.formulario-diario textarea {
+  width: 100%;
+  margin-top: 6px;
+  padding: 13px;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  outline: none;
+  font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.formulario-diario textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.formulario-diario label:nth-child(3) {
+  grid-column: 1 / -1;
+}
+
+.formulario-diario button {
+  width: fit-content;
+}
+
+.lista-anotacoes-area {
+  margin-top: 34px;
+}
+
+.lista-anotacoes-area h4 {
   color: #111827;
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+}
+
+.lista-anotacoes {
+  display: grid;
+  gap: 16px;
+}
+
+.anotacao-card {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-left: 5px solid #7c3aed;
+  border-radius: 16px;
+  padding: 18px;
+}
+
+.anotacao-card h5 {
+  color: #2563eb;
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+.anotacao-card span {
+  display: inline-block;
+  color: #6b7280;
+  font-size: 0.88rem;
+  margin-bottom: 10px;
+}
+
+.anotacao-card p {
+  color: #374151;
+  margin-bottom: 12px;
+  white-space: pre-wrap;
+}
+
+.botao-apagar {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 9px 14px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.botao-apagar:hover {
+  opacity: 0.9;
 }
 
 /* CARREIRA */
@@ -420,6 +488,115 @@ body {
   color: #4b5563;
 }
 
+.dica-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: 0.3s;
+  border: 1px solid transparent;
+}
+
+.dica-link:hover {
+  transform: translateY(-4px);
+  border-color: #7c3aed;
+  box-shadow: 0 10px 24px rgba(124, 58, 237, 0.15);
+}
+
+.dica-link span {
+  display: inline-block;
+  margin-top: 12px;
+  color: #2563eb;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+/* GUIAS */
+
+.guias-exterior {
+  background: #ffffff;
+}
+
+.guia-card {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 22px;
+  padding: 30px;
+  margin-bottom: 28px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  scroll-margin-top: 120px;
+}
+
+.guia-card h3 {
+  color: #2563eb;
+  font-size: 1.5rem;
+  margin-bottom: 18px;
+}
+
+.guia-card h4 {
+  color: #111827;
+  margin-top: 22px;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.guia-card p {
+  color: #374151;
+  margin-bottom: 12px;
+}
+
+.guia-card ol,
+.guia-card ul {
+  padding-left: 22px;
+  margin-bottom: 16px;
+}
+
+.guia-card li {
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.exemplo-guia {
+  background: white;
+  border: 1px solid #dbeafe;
+  border-radius: 16px;
+  padding: 16px;
+  margin: 12px 0 18px;
+}
+
+.exemplo-guia p {
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.exemplo-guia p:last-child {
+  margin-bottom: 0;
+}
+
+.guia-dica {
+  background: #eef2ff;
+  color: #3730a3;
+  border-left: 5px solid #7c3aed;
+  padding: 14px 16px;
+  border-radius: 14px;
+  font-weight: bold;
+  margin-top: 16px;
+}
+
+.voltar-guia {
+  display: inline-block;
+  margin-top: 18px;
+  color: white;
+  background: linear-gradient(90deg, #2563eb, #7c3aed);
+  padding: 11px 18px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.voltar-guia:hover {
+  opacity: 0.9;
+}
+
 /* RODAPÉ */
 
 .rodape {
@@ -433,7 +610,7 @@ body {
   color: white;
 }
 
-/* RESPONSIVO PARA TABLET */
+/* RESPONSIVO TABLET */
 
 @media (max-width: 900px) {
   .hero,
@@ -446,16 +623,12 @@ body {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .calendario-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .hero-texto h2 {
     font-size: 2.3rem;
   }
 }
 
-/* RESPONSIVO PARA CELULAR */
+/* RESPONSIVO CELULAR */
 
 @media (max-width: 650px) {
   .topo {
@@ -491,8 +664,7 @@ body {
   }
 
   .passos,
-  .dicas-grid,
-  .calendario-grid {
+  .dicas-grid {
     grid-template-columns: 1fr;
   }
 
@@ -504,13 +676,32 @@ body {
   .resultado-plano,
   .grupo-estudo,
   .hero-card,
-  .exterior-box {
+  .exterior-box,
+  .guia-card,
+  .diario-area {
     padding: 22px;
   }
 
   .botao-principal,
-  .botao-grupo {
+  .botao-grupo,
+  .voltar-guia {
     width: 100%;
     text-align: center;
+  }
+
+  .formulario-diario {
+    grid-template-columns: 1fr;
+  }
+
+  .formulario-diario button {
+    width: 100%;
+  }
+
+  .guia-card {
+    scroll-margin-top: 150px;
+  }
+
+  .guia-card h3 {
+    font-size: 1.3rem;
   }
 }
