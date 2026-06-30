@@ -28,8 +28,9 @@ const respostas = [
 ];
 
 document.addEventListener("DOMContentLoaded", function () {
-  criarCalendarioPadrao();
   configurarFormulario();
+  configurarDiarioEstudos();
+  carregarAnotacoesSalvas();
 });
 
 function configurarFormulario() {
@@ -47,7 +48,6 @@ function configurarFormulario() {
     const area = identificarAreaPeloObjetivo(faculdade);
 
     gerarPlano(nome, faculdade, area, horas, modo, exterior);
-    atualizarCalendario(horas, area);
     mostrarGrupoEstudo(nome, area, modo);
   });
 }
@@ -178,7 +178,6 @@ function obterPlanoDetalhado(area) {
   const planos = {
     "Saúde e bem-estar": {
       foco: "Entender o corpo humano, saúde, bem-estar, cuidado com pessoas e qualidade de vida.",
-
       ondeTrabalhar: [
         "Hospitais, clínicas e postos de saúde",
         "Laboratórios, farmácias ou centros de pesquisa",
@@ -186,7 +185,6 @@ function obterPlanoDetalhado(area) {
         "Escolas, empresas, academias ou projetos de saúde",
         "Áreas de prevenção, reabilitação ou acompanhamento de pacientes"
       ],
-
       materiasCurso: [
         "Anatomia",
         "Biologia celular",
@@ -197,7 +195,6 @@ function obterPlanoDetalhado(area) {
         "Ética profissional",
         "Psicologia aplicada à saúde"
       ],
-
       basicoAtuar: [
         "Ter responsabilidade e cuidado com pessoas",
         "Saber se comunicar com clareza",
@@ -205,23 +202,19 @@ function obterPlanoDetalhado(area) {
         "Entender noções básicas de Biologia e Química",
         "Ter paciência, empatia e atenção aos detalhes"
       ],
-
       estudar: [
         "Biologia: células, sistemas do corpo humano e funcionamento do organismo",
         "Química básica: substâncias, reações simples e relação com o corpo",
         "Leitura e interpretação: textos sobre saúde, comportamento e qualidade de vida",
         "Atualidades: saúde mental, alimentação, exercícios e prevenção"
       ],
-
       comoEstudar: [
         "Comece fazendo resumos curtos sobre cada sistema do corpo humano.",
         "Use desenhos e mapas mentais para visualizar órgãos e funções.",
         "Assista aulas curtas e depois explique o conteúdo com suas palavras.",
         "Resolva questões simples de Biologia e Química para fixar."
       ],
-
       pratica: "Criar um mapa mental sobre corpo humano, saúde mental ou qualidade de vida.",
-
       primeiroMes: [
         "Semana 1: estudar introdução à Biologia e corpo humano.",
         "Semana 2: estudar Química básica aplicada à saúde.",
@@ -232,7 +225,6 @@ function obterPlanoDetalhado(area) {
 
     "Tecnologia e dados": {
       foco: "Aprender a organizar informações, resolver problemas e criar soluções usando tecnologia.",
-
       ondeTrabalhar: [
         "Empresas de tecnologia",
         "Bancos, startups e empresas de dados",
@@ -240,7 +232,6 @@ function obterPlanoDetalhado(area) {
         "Empresas que usam sistemas, sites e aplicativos",
         "Trabalho remoto como desenvolvedor, analista ou freelancer"
       ],
-
       materiasCurso: [
         "Lógica de programação",
         "Algoritmos",
@@ -251,7 +242,6 @@ function obterPlanoDetalhado(area) {
         "Análise de dados",
         "Segurança da informação"
       ],
-
       basicoAtuar: [
         "Saber resolver problemas com lógica",
         "Entender programação básica",
@@ -259,23 +249,19 @@ function obterPlanoDetalhado(area) {
         "Ter paciência para testar, errar e corrigir",
         "Criar projetos para mostrar o que sabe fazer"
       ],
-
       estudar: [
         "Lógica de programação: variáveis, condições, repetições e funções",
         "HTML e CSS: estrutura e aparência de páginas",
         "JavaScript: interação, formulários e manipulação de dados",
         "Planilhas e gráficos: organização e visualização de informações"
       ],
-
       comoEstudar: [
         "Comece criando pequenos códigos, não apenas assistindo aula.",
         "Faça um arquivo por dia com um exercício simples.",
         "Use exemplos reais, como lista de notas, rotina de estudos ou pesquisa com alunos.",
         "Depois de estudar, tente modificar o código sem copiar."
       ],
-
       pratica: "Criar uma página simples que recebe dados de uma pessoa e mostra uma recomendação.",
-
       primeiroMes: [
         "Semana 1: estudar lógica de programação e variáveis.",
         "Semana 2: estudar HTML e CSS criando páginas simples.",
@@ -286,7 +272,6 @@ function obterPlanoDetalhado(area) {
 
     "Humanas e comportamento": {
       foco: "Entender pessoas, sociedade, comunicação, comportamento e relações humanas.",
-
       ondeTrabalhar: [
         "Escolas, ONGs e projetos sociais",
         "Empresas na área de pessoas, atendimento ou comportamento",
@@ -294,7 +279,6 @@ function obterPlanoDetalhado(area) {
         "Pesquisa, educação ou desenvolvimento humano",
         "Áreas de comunicação, mediação e orientação"
       ],
-
       materiasCurso: [
         "Sociologia",
         "Filosofia",
@@ -305,7 +289,6 @@ function obterPlanoDetalhado(area) {
         "Metodologia de pesquisa",
         "Leitura e produção de textos"
       ],
-
       basicoAtuar: [
         "Gostar de ler e interpretar textos",
         "Saber observar comportamentos e situações sociais",
@@ -313,23 +296,19 @@ function obterPlanoDetalhado(area) {
         "Conseguir argumentar com clareza",
         "Entender diferentes opiniões e contextos"
       ],
-
       estudar: [
         "Sociologia: sociedade, cultura, grupos sociais e desigualdade",
         "Filosofia: pensamento crítico, ética e formas de argumentar",
         "Psicologia básica: emoções, comportamento e relações humanas",
         "Interpretação de texto: leitura crítica e identificação de ideias principais"
       ],
-
       comoEstudar: [
         "Leia textos curtos e marque as ideias principais.",
         "Faça resumos com exemplos do cotidiano.",
         "Compare opiniões diferentes sobre o mesmo tema.",
         "Treine escrever pequenos parágrafos argumentativos."
       ],
-
       pratica: "Criar um texto ou apresentação sobre comportamento, sociedade ou escolhas profissionais.",
-
       primeiroMes: [
         "Semana 1: estudar cultura, sociedade e grupos sociais.",
         "Semana 2: estudar ética, pensamento crítico e argumentação.",
@@ -340,7 +319,6 @@ function obterPlanoDetalhado(area) {
 
     "Design e criatividade": {
       foco: "Aprender a criar materiais visuais bonitos, organizados e com boa comunicação.",
-
       ondeTrabalhar: [
         "Agências de publicidade e marketing",
         "Empresas de design, moda ou criação visual",
@@ -348,7 +326,6 @@ function obterPlanoDetalhado(area) {
         "Redes sociais, criação de conteúdo e identidade visual",
         "Trabalho freelancer criando artes, marcas e materiais digitais"
       ],
-
       materiasCurso: [
         "Desenho",
         "Composição visual",
@@ -359,7 +336,6 @@ function obterPlanoDetalhado(area) {
         "História da arte",
         "Ferramentas de criação"
       ],
-
       basicoAtuar: [
         "Ter criatividade e senso visual",
         "Saber combinar cores, fontes e imagens",
@@ -367,23 +343,19 @@ function obterPlanoDetalhado(area) {
         "Montar portfólio com trabalhos próprios",
         "Entender o objetivo da comunicação visual"
       ],
-
       estudar: [
         "Cores: combinação, contraste e harmonia visual",
         "Tipografia: escolha de fontes e hierarquia de textos",
         "Composição: alinhamento, espaçamento e organização dos elementos",
         "Ferramentas: Canva, Figma ou outro editor visual"
       ],
-
       comoEstudar: [
         "Analise posts, cartazes e sites para entender o que funciona visualmente.",
         "Recrie layouts simples para treinar composição.",
         "Monte uma pasta com referências visuais.",
         "Crie peças próprias e compare versões antes e depois."
       ],
-
       pratica: "Criar três artes: um cartaz, um post de rede social e uma capa de apresentação.",
-
       primeiroMes: [
         "Semana 1: estudar cores e combinações.",
         "Semana 2: estudar fontes, títulos e organização visual.",
@@ -394,7 +366,6 @@ function obterPlanoDetalhado(area) {
 
     "Negócios e administração": {
       foco: "Aprender organização, planejamento, comunicação e noções de gestão.",
-
       ondeTrabalhar: [
         "Empresas privadas de diferentes setores",
         "Comércio, indústria, bancos e escritórios",
@@ -402,7 +373,6 @@ function obterPlanoDetalhado(area) {
         "Recursos humanos, compras, vendas e atendimento",
         "Empreendimentos próprios ou pequenos negócios"
       ],
-
       materiasCurso: [
         "Administração",
         "Contabilidade básica",
@@ -413,7 +383,6 @@ function obterPlanoDetalhado(area) {
         "Planejamento estratégico",
         "Empreendedorismo"
       ],
-
       basicoAtuar: [
         "Saber se organizar e cumprir prazos",
         "Entender noções de dinheiro, custo e lucro",
@@ -421,23 +390,19 @@ function obterPlanoDetalhado(area) {
         "Saber usar planilhas e documentos",
         "Conseguir resolver problemas do dia a dia"
       ],
-
       estudar: [
         "Matemática básica: porcentagem, média, lucro e custo",
         "Organização: metas, tarefas, prazos e prioridades",
         "Noções de economia: consumo, preço, mercado e dinheiro",
         "Comunicação profissional: e-mails, apresentações e postura"
       ],
-
       comoEstudar: [
         "Use exemplos reais, como controle de gastos ou planejamento de uma loja.",
         "Crie tabelas simples para organizar informações.",
         "Faça simulações de orçamento, lucro e preço.",
         "Treine explicar uma ideia de forma clara e objetiva."
       ],
-
       pratica: "Criar um plano simples de negócio com custo, preço, público e divulgação.",
-
       primeiroMes: [
         "Semana 1: estudar porcentagem, média e organização financeira.",
         "Semana 2: estudar planejamento e controle de tarefas.",
@@ -448,7 +413,6 @@ function obterPlanoDetalhado(area) {
 
     "Direito e sociedade": {
       foco: "Desenvolver leitura, argumentação, interpretação e compreensão da sociedade.",
-
       ondeTrabalhar: [
         "Escritórios de advocacia",
         "Empresas, bancos e departamentos jurídicos",
@@ -456,7 +420,6 @@ function obterPlanoDetalhado(area) {
         "Áreas de compliance, contratos e consultoria",
         "Carreiras públicas mediante concurso"
       ],
-
       materiasCurso: [
         "Introdução ao Direito",
         "Direito Civil",
@@ -467,7 +430,6 @@ function obterPlanoDetalhado(area) {
         "Ética profissional",
         "Português jurídico"
       ],
-
       basicoAtuar: [
         "Ler e interpretar textos com atenção",
         "Saber escrever bem",
@@ -475,23 +437,19 @@ function obterPlanoDetalhado(area) {
         "Entender regras, leis e responsabilidades",
         "Gostar de estudar atualidades e sociedade"
       ],
-
       estudar: [
         "Interpretação de texto: ideia principal, argumentos e conclusão",
         "Atualidades: temas sociais, políticos e econômicos",
         "História e sociologia: sociedade, cidadania e instituições",
         "Escrita argumentativa: defender uma opinião com lógica"
       ],
-
       comoEstudar: [
         "Leia notícias e tente resumir o problema principal.",
         "Escreva pequenos textos defendendo um ponto de vista.",
         "Treine separar fato, opinião e argumento.",
         "Monte fichamentos simples dos textos lidos."
       ],
-
       pratica: "Escrever um texto argumentativo sobre um problema social atual.",
-
       primeiroMes: [
         "Semana 1: treinar interpretação de textos e notícias.",
         "Semana 2: estudar cidadania, sociedade e instituições.",
@@ -502,7 +460,6 @@ function obterPlanoDetalhado(area) {
 
     "Educação": {
       foco: "Aprender a comunicar ideias, organizar conteúdos e explicar assuntos com clareza.",
-
       ondeTrabalhar: [
         "Escolas públicas e particulares",
         "Cursos, reforço escolar e aulas particulares",
@@ -510,7 +467,6 @@ function obterPlanoDetalhado(area) {
         "Editoras, produção de material didático e plataformas de ensino",
         "Coordenação pedagógica e apoio educacional"
       ],
-
       materiasCurso: [
         "Didática",
         "Psicologia da educação",
@@ -521,7 +477,6 @@ function obterPlanoDetalhado(area) {
         "Planejamento de aula",
         "Avaliação da aprendizagem"
       ],
-
       basicoAtuar: [
         "Gostar de ensinar e explicar",
         "Ter paciência e comunicação clara",
@@ -529,23 +484,19 @@ function obterPlanoDetalhado(area) {
         "Entender diferentes formas de aprendizagem",
         "Criar atividades e acompanhar a evolução dos alunos"
       ],
-
       estudar: [
         "Leitura e escrita: interpretação e produção de textos",
         "Comunicação: fala clara, escuta e explicação",
         "Didática: formas de ensinar e organizar conteúdo",
         "Planejamento: criação de roteiro de estudo ou aula"
       ],
-
       comoEstudar: [
         "Escolha um conteúdo simples e tente explicar para outra pessoa.",
         "Crie resumos, mapas mentais e pequenos roteiros.",
         "Grave sua explicação para perceber pontos de melhoria.",
         "Observe como professores organizam aulas e atividades."
       ],
-
       pratica: "Criar uma mini aula ou apresentação explicando um tema que você domina.",
-
       primeiroMes: [
         "Semana 1: estudar leitura, escrita e organização de ideias.",
         "Semana 2: treinar explicações curtas.",
@@ -556,7 +507,6 @@ function obterPlanoDetalhado(area) {
 
     "Engenharia e exatas": {
       foco: "Fortalecer raciocínio lógico, matemática, física e resolução de problemas.",
-
       ondeTrabalhar: [
         "Indústrias, construtoras e empresas de engenharia",
         "Laboratórios, fábricas e áreas técnicas",
@@ -564,7 +514,6 @@ function obterPlanoDetalhado(area) {
         "Consultorias, projetos e manutenção",
         "Áreas de pesquisa, planejamento e desenvolvimento"
       ],
-
       materiasCurso: [
         "Cálculo",
         "Física",
@@ -575,7 +524,6 @@ function obterPlanoDetalhado(area) {
         "Desenho técnico",
         "Resistência dos materiais"
       ],
-
       basicoAtuar: [
         "Ter raciocínio lógico",
         "Gostar de resolver problemas",
@@ -583,23 +531,19 @@ function obterPlanoDetalhado(area) {
         "Interpretar gráficos, medidas e fórmulas",
         "Ter atenção, organização e pensamento prático"
       ],
-
       estudar: [
         "Matemática: frações, porcentagem, equações e funções",
         "Física: movimento, força, energia e eletricidade básica",
         "Raciocínio lógico: padrões, problemas e sequências",
         "Interpretação de problemas: identificar dados e o que está sendo pedido"
       ],
-
       comoEstudar: [
         "Resolva exercícios todos os dias, mesmo que poucos.",
         "Anote os erros e refaça depois sem olhar a resposta.",
         "Separe fórmulas importantes e escreva exemplos de uso.",
         "Comece pelo básico antes de ir para exercícios difíceis."
       ],
-
       pratica: "Montar uma lista resolvida com 10 exercícios comentados.",
-
       primeiroMes: [
         "Semana 1: revisar matemática básica e porcentagem.",
         "Semana 2: estudar equações e funções simples.",
@@ -610,7 +554,6 @@ function obterPlanoDetalhado(area) {
 
     "Comunicação e marketing": {
       foco: "Aprender a criar mensagens, divulgar ideias e se comunicar com públicos diferentes.",
-
       ondeTrabalhar: [
         "Agências de publicidade e marketing",
         "Empresas na área de comunicação e redes sociais",
@@ -618,7 +561,6 @@ function obterPlanoDetalhado(area) {
         "E-commerce, vendas e criação de conteúdo",
         "Trabalho freelancer com textos, campanhas e mídias sociais"
       ],
-
       materiasCurso: [
         "Marketing",
         "Comunicação digital",
@@ -629,7 +571,6 @@ function obterPlanoDetalhado(area) {
         "Produção de conteúdo",
         "Comportamento do consumidor"
       ],
-
       basicoAtuar: [
         "Saber escrever bem",
         "Entender o público que quer atingir",
@@ -637,23 +578,19 @@ function obterPlanoDetalhado(area) {
         "Conhecer redes sociais e comunicação digital",
         "Saber analisar resultados e melhorar estratégias"
       ],
-
       estudar: [
         "Escrita criativa: títulos, legendas e textos curtos",
         "Comunicação digital: redes sociais, público e linguagem",
         "Marketing básico: produto, público, divulgação e valor",
         "Imagem e conteúdo: posts, vídeos, apresentações e identidade"
       ],
-
       comoEstudar: [
         "Analise perfis, campanhas e anúncios para entender estratégias.",
         "Escreva legendas e chamadas para temas diferentes.",
         "Crie posts simulando divulgação de produtos ou ideias.",
         "Teste versões diferentes do mesmo texto e compare."
       ],
-
       pratica: "Criar uma campanha simples com 3 posts e uma ideia de divulgação.",
-
       primeiroMes: [
         "Semana 1: estudar público-alvo e comunicação.",
         "Semana 2: treinar escrita de títulos e legendas.",
@@ -664,7 +601,6 @@ function obterPlanoDetalhado(area) {
 
     "Esportes e movimento": {
       foco: "Entender corpo, movimento, saúde, esporte e qualidade de vida.",
-
       ondeTrabalhar: [
         "Academias e centros esportivos",
         "Escolas, clubes e projetos sociais",
@@ -672,7 +608,6 @@ function obterPlanoDetalhado(area) {
         "Equipes esportivas e preparação física",
         "Áreas de saúde, bem-estar e qualidade de vida"
       ],
-
       materiasCurso: [
         "Anatomia",
         "Fisiologia",
@@ -683,7 +618,6 @@ function obterPlanoDetalhado(area) {
         "Esportes coletivos",
         "Saúde e qualidade de vida"
       ],
-
       basicoAtuar: [
         "Entender o funcionamento do corpo",
         "Gostar de esportes e movimento",
@@ -691,23 +625,19 @@ function obterPlanoDetalhado(area) {
         "Ter comunicação e cuidado com pessoas",
         "Conhecer prevenção de lesões e hábitos saudáveis"
       ],
-
       estudar: [
         "Biologia: músculos, ossos, respiração e energia",
         "Anatomia básica: partes do corpo e funções",
         "Saúde: alimentação, descanso e prevenção de lesões",
         "Esportes: regras, treino, disciplina e desempenho"
       ],
-
       comoEstudar: [
         "Relacione teoria com práticas esportivas reais.",
         "Faça resumos com desenhos do corpo humano.",
         "Pesquise sobre modalidades esportivas e tipos de treino.",
         "Observe como alimentação, descanso e treino influenciam resultados."
       ],
-
       pratica: "Criar uma rotina semanal de atividade física com explicação dos benefícios.",
-
       primeiroMes: [
         "Semana 1: estudar corpo humano e movimento.",
         "Semana 2: estudar alimentação, descanso e saúde.",
@@ -718,7 +648,6 @@ function obterPlanoDetalhado(area) {
 
     "Ainda não sei": {
       foco: "Descobrir interesses antes de escolher uma área definitiva.",
-
       ondeTrabalhar: [
         "Ainda depende da área escolhida",
         "Projetos escolares, cursos e atividades de teste",
@@ -726,7 +655,6 @@ function obterPlanoDetalhado(area) {
         "Áreas que permitam conhecer diferentes profissões",
         "Atividades voluntárias ou projetos práticos"
       ],
-
       materiasCurso: [
         "Português e interpretação",
         "Matemática básica",
@@ -737,7 +665,6 @@ function obterPlanoDetalhado(area) {
         "Organização de estudos",
         "Autoconhecimento"
       ],
-
       basicoAtuar: [
         "Pesquisar profissões antes de decidir",
         "Conhecer seus interesses e dificuldades",
@@ -745,23 +672,19 @@ function obterPlanoDetalhado(area) {
         "Conversar com pessoas que trabalham nas áreas",
         "Criar uma rotina simples de estudo"
       ],
-
       estudar: [
         "Autoconhecimento: matérias que você gosta e não gosta",
         "Pesquisa de profissões: rotina, salário, faculdade e mercado",
         "Testes vocacionais: usar como apoio, não como decisão final",
         "Conversas: falar com pessoas que trabalham em áreas diferentes"
       ],
-
       comoEstudar: [
         "Anote três áreas que chamam sua atenção.",
         "Pesquise vídeos curtos sobre cada profissão.",
         "Compare rotina, matérias da faculdade e possibilidades de trabalho.",
         "Teste uma atividade prática de cada área antes de escolher."
       ],
-
       pratica: "Criar uma tabela comparando 3 profissões possíveis.",
-
       primeiroMes: [
         "Semana 1: listar interesses, matérias favoritas e habilidades.",
         "Semana 2: pesquisar 3 profissões diferentes.",
@@ -954,85 +877,126 @@ function gerarPlano(nome, faculdade, area, horas, modo, exterior) {
   `;
 }
 
-function criarCalendarioPadrao() {
-  atualizarCalendario(1, "Tecnologia e dados");
-}
+/* DIÁRIO / CADERNO DE ESTUDOS */
 
-function atualizarCalendario(horas, area) {
-  const calendario = document.getElementById("calendarioSemanal");
+function configurarDiarioEstudos() {
+  const formDiario = document.getElementById("formDiario");
+  const dataDiario = document.getElementById("dataDiario");
 
-  const plano = obterPlanoDetalhado(area);
+  if (dataDiario) {
+    const hoje = new Date().toISOString().split("T")[0];
+    dataDiario.value = hoje;
+  }
 
-  const atividadesBase = [
-    {
-      dia: "Segunda",
-      atividade: plano.estudar[0],
-      foco: "Estude a base principal da área escolhida."
-    },
-    {
-      dia: "Terça",
-      atividade: plano.estudar[1],
-      foco: "Faça anotações e tente explicar o conteúdo com suas palavras."
-    },
-    {
-      dia: "Quarta",
-      atividade: plano.estudar[2],
-      foco: "Leia, assista uma aula curta e faça um resumo simples."
-    },
-    {
-      dia: "Quinta",
-      atividade: plano.estudar[3],
-      foco: "Pratique com exercícios, exemplos ou pequenas atividades."
-    },
-    {
-      dia: "Sexta",
-      atividade: "Revisão da semana",
-      foco: "Revise o que estudou e anote dúvidas."
-    },
-    {
-      dia: "Sábado",
-      atividade: plano.pratica,
-      foco: "Transforme o estudo em uma entrega prática."
-    },
-    {
-      dia: "Domingo",
-      atividade: "Descanso ou revisão leve",
-      foco: "Descanse ou revise por pouco tempo, sem pressão."
-    }
-  ];
+  if (!formDiario) {
+    return;
+  }
 
-  calendario.innerHTML = "";
+  formDiario.addEventListener("submit", function (evento) {
+    evento.preventDefault();
 
-  atividadesBase.forEach(function (item) {
-    let tempoTexto = "";
+    const data = document.getElementById("dataDiario").value;
+    const tema = document.getElementById("temaDiario").value;
+    const texto = document.getElementById("textoDiario").value;
 
-    if (horas <= 0) {
-      tempoTexto = "Sugestão: comece com 20 minutos.";
-    } else if (horas <= 1) {
-      tempoTexto = "Tempo sugerido: 30 a 60 minutos.";
-    } else if (horas <= 3) {
-      tempoTexto = `Tempo sugerido: ${horas} hora(s), dividindo entre teoria e prática.`;
-    } else {
-      tempoTexto = `Tempo sugerido: ${horas} hora(s), com pausas e blocos de estudo.`;
-    }
+    const novaAnotacao = {
+      id: Date.now(),
+      data: data,
+      tema: tema,
+      texto: texto
+    };
 
-    if (item.dia === "Domingo") {
-      tempoTexto = "Descanso ou 30 minutos de revisão leve.";
-    }
+    const anotacoes = carregarAnotacoes();
 
-    const card = document.createElement("div");
-    card.classList.add("dia-card");
+    anotacoes.unshift(novaAnotacao);
 
-    card.innerHTML = `
-      <h4>${item.dia}</h4>
-      <p><strong>${item.atividade}</strong></p>
-      <p>${item.foco}</p>
-      <p>${tempoTexto}</p>
-    `;
+    localStorage.setItem("diarioEstudos", JSON.stringify(anotacoes));
 
-    calendario.appendChild(card);
+    formDiario.reset();
+
+    const hoje = new Date().toISOString().split("T")[0];
+    document.getElementById("dataDiario").value = hoje;
+
+    carregarAnotacoesSalvas();
+
+    alert("Anotação salva no diário de estudos!");
   });
 }
+
+function carregarAnotacoes() {
+  const dados = localStorage.getItem("diarioEstudos");
+
+  if (!dados) {
+    return [];
+  }
+
+  try {
+    return JSON.parse(dados);
+  } catch (erro) {
+    return [];
+  }
+}
+
+function carregarAnotacoesSalvas() {
+  const lista = document.getElementById("listaAnotacoes");
+
+  if (!lista) {
+    return;
+  }
+
+  const anotacoes = carregarAnotacoes();
+
+  if (anotacoes.length === 0) {
+    lista.innerHTML = `
+      <p>
+        Nenhuma anotação salva ainda. Use o diário para registrar o que estudou.
+      </p>
+    `;
+    return;
+  }
+
+  lista.innerHTML = anotacoes.map(function (anotacao) {
+    return `
+      <div class="anotacao-card">
+        <h5>${anotacao.tema}</h5>
+        <span>${formatarData(anotacao.data)}</span>
+        <p>${anotacao.texto}</p>
+
+        <button
+          type="button"
+          class="botao-apagar"
+          onclick="apagarAnotacao(${anotacao.id})"
+        >
+          Apagar anotação
+        </button>
+      </div>
+    `;
+  }).join("");
+}
+
+function apagarAnotacao(id) {
+  const anotacoes = carregarAnotacoes();
+
+  const anotacoesAtualizadas = anotacoes.filter(function (anotacao) {
+    return anotacao.id !== id;
+  });
+
+  localStorage.setItem("diarioEstudos", JSON.stringify(anotacoesAtualizadas));
+
+  carregarAnotacoesSalvas();
+}
+
+function formatarData(data) {
+  if (!data) {
+    return "Sem data";
+  }
+
+  const partes = data.split("-");
+
+  return `${partes[2]}/${partes[1]}/${partes[0]}`;
+}
+
+/* GRUPO DE ESTUDOS */
 
 function mostrarGrupoEstudo(nome, area, modo) {
   const areaGrupo = document.getElementById("areaGrupoEstudo");
@@ -1055,7 +1019,6 @@ function mostrarGrupoEstudo(nome, area, modo) {
   });
 
   const mensagemGrupo = `Olá! Meu nome é ${nome}. Quero participar ou criar um grupo de estudos para pessoas com interesse em ${area}.`;
-
   const linkWhatsapp = `https://wa.me/?text=${encodeURIComponent(mensagemGrupo)}`;
 
   botaoWhatsapp.href = linkWhatsapp;
